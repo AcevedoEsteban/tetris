@@ -32,12 +32,12 @@ const Tetris = () => {
   const dropPlayer = () => {
     drop();
   };
-  const move = (keyCode) => {
+  const move = ({ keyCode }) => {
     if (!gameOver) {
       if (keyCode === 37) {
         movePlayer(-1);
       } else if (keyCode === 39) {
-        move(1);
+        movePlayer(1);
       } else if (keyCode === 40) {
         dropPlayer();
       }
@@ -58,7 +58,7 @@ const Tetris = () => {
               <Display text='Level'></Display>
             </div>
           )}
-          <StartButton onClick={startGame} />
+          <StartButton callback={startGame} />
         </aside>
       </StyledTetris>
     </StyledTetrisWrapper>

@@ -8,7 +8,7 @@ export const useStage = (player, resetPlayer) => {
     const updateStage = (prevStage) => {
       //frist flush stage
       const newStage = prevStage.map((row) =>
-        row.map((cell) => (cell[1] === "clear " ? [0, "clear"] : cell))
+        row.map((cell) => (cell[1] === "clear" ? [0, "clear"] : cell))
       );
 
       //then draw the tertromino
@@ -22,9 +22,12 @@ export const useStage = (player, resetPlayer) => {
           }
         });
       });
+
       return newStage;
     };
+
     setStage((prev) => updateStage(prev));
-  }, [player.collided, player.pos.x, player.pos.y, player.tetromino]);
+  }, [player]);
+
   return [stage, setStage];
 };
