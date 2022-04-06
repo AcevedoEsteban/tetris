@@ -1,11 +1,18 @@
 import React, { useState } from "react";
+
+import { createStage } from "../gameHelpers";
+
+// Styled Components
+import { StyledTetrisWrapper, StyledTetris } from "./styles/StyledTetris";
+
+// Custom Hooks
+import { usePlayer } from "../hooks/usePlayer";
+import { useStage } from "../hooks/useStage";
+
+// Components
 import Stage from "./Stage";
 import Display from "./Display";
 import StartButton from "./StartButton";
-import { StyledTetrisWrapper, StyledTetris } from "./styles/StyledTetris";
-import { createStage } from "../gameHelpers";
-import { usePlayer } from "../hooks/usePlayer";
-import { useStage } from "../hooks/usaStage";
 
 const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
