@@ -29,7 +29,6 @@ const Tetris = () => {
   };
 
   const startGame = () => {
-    console.log("object");
     //reset everything
     setStage(createStage());
     resetPlayer();
@@ -75,9 +74,9 @@ const Tetris = () => {
             <Display gameOver={gameOver} text='Game Over' />
           ) : (
             <div>
-              <Display text='Score'></Display>
-              <Display text='Row'></Display>
-              <Display text='Level'></Display>
+              <Display text='Score' />
+              <Display text='Row' />
+              <Display text='Level' />
             </div>
           )}
           <StartButton callback={startGame} />
