@@ -3,10 +3,11 @@ import { createStage } from "../gameHelpers";
 
 export const useStage = (player, resetPlayer) => {
   const [stage, setStage] = useState(createStage());
-  const [rowCleared, setRowsCleared] = useStage(0);
+  const [rowsCleared, setRowsCleared] = useState(0);
 
   useEffect(() => {
     setRowsCleared(0);
+
     const sweepRows = (newStage) =>
       newStage.reduce((ack, row) => {
         if (row.findIndex((cell) => cell[0] === 0) === -1) {
@@ -17,6 +18,7 @@ export const useStage = (player, resetPlayer) => {
         ack.push(row);
         return ack;
       }, []);
+
     const updateStage = (prevStage) => {
       // First flush the stage
       const newStage = prevStage.map((row) =>
@@ -37,13 +39,13 @@ export const useStage = (player, resetPlayer) => {
       // Then check if we collided
       if (player.collided) {
         resetPlayer();
+        return sweepRows(newStage);
       }
-
       return newStage;
     };
 
     setStage((prev) => updateStage(prev));
   }, [player, resetPlayer]);
 
-  return [stage, setStage];
+  return [stage, setStage, rowsCleared];
 };
